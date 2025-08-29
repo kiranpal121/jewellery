@@ -127,6 +127,10 @@ const Header = () => {
             
             <a href="/shop" className="nav-link">SHOP</a>
             <a href="/product" className="nav-link">PRODUCT</a>
+            <a href="/pages" className="nav-link">PAGES</a>
+            <a href="/blog" className="nav-link">BLOG</a>
+            <a href="/contact" className="nav-link">CONTACT</a>
+
           </nav>
         </div>
 
@@ -156,11 +160,11 @@ const Header = () => {
         {/* Right side - Icons and additional navigation */}
         <div className="flex items-center">
           {/* Additional nav links (visible when search is closed) */}
-          <nav className={`hidden lg:flex space-x-8 mr-4 transition-all duration-300 ${isSearchOpen ? 'opacity-0 translate-x-4 pointer-events-none' : 'opacity-100'}`}>
+          {/* <nav className={`hidden lg:flex space-x-8 mr-4 transition-all duration-300 ${isSearchOpen ? 'opacity-0 translate-x-4 pointer-events-none' : 'opacity-100'}`}>
             <a href="/pages" className="nav-link">PAGES</a>
             <a href="/blog" className="nav-link">BLOG</a>
             <a href="/contact" className="nav-link">CONTACT</a>
-          </nav>
+          </nav> */}
 
           {/* Right - Icons */}
           <div className="flex items-center space-x-4 sm:space-x-5">
