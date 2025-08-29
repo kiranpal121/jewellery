@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400&display=swap');
+
+.nav-link {
+  font-family: "Inter Tight", HelveticaNeue-Light, "Helvetica Neue Light",
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 12px;
+  line-height: 17.3333px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #2a2929ff;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #d97706; /* yellow-600 */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  display: flex;
+  width: 200%; /* double content width */
+  animation: marquee 20s linear infinite;
+}
+
