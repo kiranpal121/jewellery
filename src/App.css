@@ -40,3 +40,45 @@
 .read-the-docs {
   color: #888;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* For the search bar animation */
+.scale-95 {
+  transform: scale(.95);
+}
+
+.scale-100 {
+  transform: scale(1);
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
