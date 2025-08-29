@@ -32,7 +32,7 @@ const slideContent = [
     subtitle: "Luxury Collection",
     title: (
       <>
-        Graceful <span className="font-extrabold">Necklaces</span> <br />
+        Graceful <span className="font-extrabold">Necklaces</span> <br className="hidden sm:inline" />
         Eye-Catching Designs
       </>
     ),
@@ -93,6 +93,11 @@ const Hero = () => {
     setIsTransitioning(true);
   };
 
+  const prevSlide = () => {
+    setCurrent((prev) => prev - 1);
+    setIsTransitioning(true);
+  };
+
   useEffect(() => {
     if (current === totalSlides + 1) {
       setTimeout(() => {
@@ -106,13 +111,13 @@ const Hero = () => {
         setCurrent(totalSlides);
       }, 1000);
     }
-  }, [current]);
+  }, [current, totalSlides]);
 
   const visibleIndex =
     current === 0 ? totalSlides - 1 : current === totalSlides + 1 ? 0 : current - 1;
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen overflow-hidden">
       {/* Slides Wrapper */}
       <div
         ref={slideRef}
@@ -124,7 +129,7 @@ const Hero = () => {
           className="w-full h-full flex-shrink-0 bg-cover bg-center relative"
           style={{ backgroundImage: `url(${images[totalSlides - 1]})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 md:from-black/50 to-transparent"></div>
         </div>
 
         {/* Real slides with animated content */}
@@ -134,47 +139,45 @@ const Hero = () => {
             className="w-full h-full flex-shrink-0 bg-cover bg-center relative"
             style={{ backgroundImage: `url(${img})` }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 md:from-black/50 to-transparent"></div>
+            
             {/* Animate content only on active slide */}
             <AnimatePresence mode="wait">
               {visibleIndex === index && (
                 <motion.div
-                  className="relative z-10 max-w-2xl px-8 text-white h-full flex flex-col justify-center"
+                  className="relative z-10 max-w-xs sm:max-w-sm md:max-w-xl px-4 sm:px-6 md:px-8 text-white h-full flex flex-col justify-center items-center md:items-start text-center md:text-left"
                   key={index}
                   initial="initial"
                   animate="animate"
                   exit="exit"
                   variants={textVariants}
-                  style={{ paddingTop: "1rem" }}
                 >
                   <motion.p
-                    className="uppercase tracking-[0.2em] text-sm mb-4 font-semibold text-white"
+                    className="uppercase tracking-[0.15em] text-xs sm:text-sm mb-2 sm:mb-3 md:mb-4 font-semibold text-white"
                     variants={childVariants}
                   >
                     {slideContent[index].subtitle}
                   </motion.p>
                   <motion.h1
-                    className="text-6xl font-bold font-serif leading-tight mb-4 text-white"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 sm:mb-3 md:mb-4 text-white"
                     variants={childVariants}
                   >
                     {slideContent[index].title}
                   </motion.h1>
                   <motion.p
-                    className="mb-6 text-lg text-white opacity-90"
+                    className="mb-4 sm:mb-5 md:mb-6 text-sm sm:text-base md:text-lg text-white opacity-90 max-w-md"
                     variants={childVariants}
                   >
                     {slideContent[index].description}
                   </motion.p>
                   <motion.button
                     whileHover={{
-      
-                      backgroundColor: "#ca8a04", // yellow fill on hover
+                      backgroundColor: "#ca8a04",
                       color: "#ffffff",
-                      
                     }}
                     whileTap={{ scale: 0.98 }}
                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                    className="px-3 py-2 max-w-[120px] bg-transparent border-2 border-white text-white rounded text-sm font-bold tracking-wide transition-all duration-300"
+                    className="px-4 py-2 sm:px-5 sm:py-2 md:px-6 md:py-3 bg-transparent border-2 border-white text-white rounded text-sm sm:text-base font-bold tracking-wide transition-all duration-300"
                     variants={childVariants}
                   >
                     Shop Now
@@ -190,24 +193,44 @@ const Hero = () => {
           className="w-full h-full flex-shrink-0 bg-cover bg-center relative"
           style={{ backgroundImage: `url(${images[0]})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 md:from-black/50 to-transparent"></div>
         </div>
       </div>
 
-      {/* Yellow Dots Navigation */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+      {/* Navigation Dots - Responsive positioning and size */}
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3 z-20">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index + 1)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
               index + 1 === current
-                ? "bg-yellow-500 scale-110"
+                ? "bg-yellow-500 scale-110 sm:scale-125"
                 : "bg-yellow-300/50 hover:bg-yellow-400"
             }`}
           />
         ))}
       </div>
+
+      {/* Prev/Next Buttons - Hidden on mobile, visible on tablet and up */}
+      {/* <button
+        onClick={prevSlide}
+        className="hidden sm:block absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 md:p-3 rounded-full hover:bg-yellow-500 transition-all duration-300"
+        aria-label="Previous slide"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button
+        onClick={nextSlide}
+        className="hidden sm:block absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 md:p-3 rounded-full hover:bg-yellow-500 transition-all duration-300"
+        aria-label="Next slide"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button> */}
     </section>
   );
 };
