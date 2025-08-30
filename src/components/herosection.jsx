@@ -32,7 +32,8 @@ const slideContent = [
     subtitle: "Luxury Collection",
     title: (
       <>
-        Graceful <span className="font-extrabold">Necklaces</span> <br className="hidden sm:inline" />
+        Graceful <span className="font-extrabold">Necklaces</span>{" "}
+        <br className="hidden sm:inline" />
         Eye-Catching Designs
       </>
     ),
@@ -121,7 +122,9 @@ const Hero = () => {
       {/* Slides Wrapper */}
       <div
         ref={slideRef}
-        className={`flex w-full h-full ${isTransitioning ? "transition-transform duration-1000 ease-in-out" : ""}`}
+        className={`flex w-full h-full ${
+          isTransitioning ? "transition-transform duration-1000 ease-in-out" : ""
+        }`}
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {/* Clone last at beginning */}
@@ -140,13 +143,23 @@ const Hero = () => {
             style={{ backgroundImage: `url(${img})` }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-black/40 md:from-black/50 to-transparent"></div>
-            
+
             {/* Animate content only on active slide */}
             <AnimatePresence mode="wait">
               {visibleIndex === index && (
                 <motion.div
-                  className="relative z-10 max-w-xs sm:max-w-sm md:max-w-xl px-4 sm:px-6 md:px-8 text-white h-full flex flex-col justify-center items-center md:items-start text-center md:text-left"
                   key={index}
+                  className="
+                    relative z-10 
+                    w-full sm:max-w-sm md:max-w-xl 
+                    px-4 sm:px-6 md:px-8 
+                    text-white 
+                    h-full 
+                    flex flex-col 
+                    justify-center 
+                    items-center md:items-start 
+                    text-center md:text-left
+                  "
                   initial="initial"
                   animate="animate"
                   exit="exit"
@@ -159,7 +172,7 @@ const Hero = () => {
                     {slideContent[index].subtitle}
                   </motion.p>
                   <motion.h1
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 sm:mb-3 md:mb-4 text-white"
+                    className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 sm:mb-3 md:mb-4 text-white"
                     variants={childVariants}
                   >
                     {slideContent[index].title}
@@ -197,7 +210,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Navigation Dots - Responsive positioning and size */}
+      {/* Navigation Dots */}
       <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3 z-20">
         {images.map((_, index) => (
           <button
@@ -212,8 +225,9 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Prev/Next Buttons - Hidden on mobile, visible on tablet and up */}
-      {/* <button
+      {/* Prev/Next Buttons (optional) */}
+      {/* 
+      <button
         onClick={prevSlide}
         className="hidden sm:block absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 md:p-3 rounded-full hover:bg-yellow-500 transition-all duration-300"
         aria-label="Previous slide"
@@ -230,7 +244,8 @@ const Hero = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
-      </button> */}
+      </button> 
+      */}
     </section>
   );
 };
