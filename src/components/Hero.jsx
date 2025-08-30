@@ -6,7 +6,6 @@ import img3 from "../assets/Herosection3.jpg";
 
 const images = [img1, img2, img3];
 
-// Extended text content with description added
 const slideContent = [
   {
     subtitle: "Purely Hand-Crafted",
@@ -42,7 +41,6 @@ const slideContent = [
   },
 ];
 
-// Text animation variants
 const textVariants = {
   initial: { opacity: 0, y: 50 },
   animate: {
@@ -119,7 +117,7 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen overflow-hidden">
-      {/* Slides Wrapper */}
+      
       <div
         ref={slideRef}
         className={`flex w-full h-full ${
@@ -127,7 +125,7 @@ const Hero = () => {
         }`}
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
-        {/* Clone last at beginning */}
+      
         <div
           className="w-full h-full flex-shrink-0 bg-cover bg-center relative"
           style={{ backgroundImage: `url(${images[totalSlides - 1]})` }}
@@ -135,7 +133,7 @@ const Hero = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black/40 md:from-black/50 to-transparent"></div>
         </div>
 
-        {/* Real slides with animated content */}
+       
         {images.map((img, index) => (
           <div
             key={index}
@@ -144,7 +142,7 @@ const Hero = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-black/40 md:from-black/50 to-transparent"></div>
 
-            {/* Animate content only on active slide */}
+            
             <AnimatePresence mode="wait">
               {visibleIndex === index && (
                 <motion.div
@@ -201,7 +199,7 @@ const Hero = () => {
           </div>
         ))}
 
-        {/* Clone first at end */}
+        
         <div
           className="w-full h-full flex-shrink-0 bg-cover bg-center relative"
           style={{ backgroundImage: `url(${images[0]})` }}
@@ -210,7 +208,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Navigation Dots */}
+     
       <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3 z-20">
         {images.map((_, index) => (
           <button
@@ -224,28 +222,6 @@ const Hero = () => {
           />
         ))}
       </div>
-
-      {/* Prev/Next Buttons (optional) */}
-      {/* 
-      <button
-        onClick={prevSlide}
-        className="hidden sm:block absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 md:p-3 rounded-full hover:bg-yellow-500 transition-all duration-300"
-        aria-label="Previous slide"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <button
-        onClick={nextSlide}
-        className="hidden sm:block absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 md:p-3 rounded-full hover:bg-yellow-500 transition-all duration-300"
-        aria-label="Next slide"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </button> 
-      */}
     </section>
   );
 };

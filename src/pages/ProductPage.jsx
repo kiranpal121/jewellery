@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Heart, Shuffle, Truck, CreditCard, Smile } from "lucide-react";
 
-// Import images from assets folder
 import img1 from "../assets/product1.jpg";
 import img2 from "../assets/product2.jpg";
 import img3 from "../assets/product3.jpg";
@@ -38,9 +37,9 @@ const ProductDetails = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-10">
-      {/* Left Section - Images */}
+      
       <div className="flex gap-4 md:gap-6 -ml-4 md:-ml-8">
-        {/* Vertical Thumbnails */}
+      
         <div className="flex flex-col gap-5 overflow-y-auto max-h-[500px] pr-2">
           {product.images.map((img, i) => (
             <motion.div
@@ -59,7 +58,7 @@ const ProductDetails = () => {
           ))}
         </div>
 
-        {/* Main Image with Zoom */}
+        
         <div
           className="relative flex-[1.2] overflow-hidden rounded-xl border border-gray-200 cursor-zoom-in"
           onMouseMove={handleMouseMove}
@@ -78,17 +77,17 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      {/* Right Section - Product Info */}
+      
       <div className="flex flex-col gap-6">
-        {/* Discount Badge */}
+     
         <span className="bg-amber-500 text-white text-sm px-3 py-1 rounded-md w-fit">
           {product.discount}%
         </span>
 
-        {/* Title */}
+        
         <h1 className="text-2xl font-bold text-gray-900">{product.name}</h1>
 
-        {/* Brand + Rating + Stock */}
+       
         <div className="flex items-center gap-4 text-sm text-gray-600">
           <span>
             Brand: <span className="text-gray-900 font-medium">{product.brand}</span>
@@ -98,7 +97,7 @@ const ProductDetails = () => {
           <span className="text-green-600">{product.stock}</span>
         </div>
 
-        {/* Price */}
+    
         <div className="flex items-center gap-3">
           <span className="text-2xl font-semibold text-gray-900">{product.price}$</span>
           <span className="text-gray-400 line-through text-lg">{product.oldPrice}$</span>
@@ -106,10 +105,10 @@ const ProductDetails = () => {
 
         <hr />
 
-        {/* Description */}
+       
         <p className="text-gray-600 text-sm leading-relaxed">{product.description}</p>
 
-        {/* Quantity + Buttons */}
+     
         <div className="flex items-center gap-4">
           <div className="flex items-center border rounded-lg">
             <button
@@ -140,12 +139,12 @@ const ProductDetails = () => {
           </button>
         </div>
 
-        {/* Buy Now */}
+        
         <button className="border border-gray-900 px-5 py-2.5 rounded-md hover:bg-black hover:text-white hover:border-black transition text-sm">
           Buy It Now
         </button>
 
-        {/* Extra Info */}
+        
         <div className="text-xs text-gray-700 flex flex-col gap-2 mt-4">
           <p className="flex items-center gap-2">
             <Truck className="w-4 h-4 text-gray-500" /> Free Shipping & Exchanges

@@ -1,13 +1,4 @@
-import {
-  ShoppingBag,
-  Heart,
-  User,
-  Search,
-  Menu,
-  X,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import {ShoppingBag,Heart,User,Search,Menu,X,ChevronDown,ChevronUp,} from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -71,7 +62,6 @@ const Header = () => {
 
   return (
     <header className="w-full border-b bg-white">
-      {/* Top Banner */}
       <div className="bg-black text-white text-xs sm:text-sm py-2 overflow-hidden relative">
         <div className="marquee-container whitespace-nowrap">
           <div className="marquee-content">
@@ -91,9 +81,9 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Navbar */}
+    
       <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-6 relative">
-        {/* Left side */}
+       
         <div
           className={`flex items-center transition-all duration-300 ${
             isSearchOpen
@@ -101,7 +91,7 @@ const Header = () => {
               : "opacity-100"
           }`}
         >
-          {/* Mobile Hamburger */}
+          
           <button
             className="lg:hidden mr-4"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -109,11 +99,11 @@ const Header = () => {
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
 
-          {/* Desktop Nav Links */}
+  
           <nav className="hidden lg:flex space-x-8">
             <Link to="/" className="nav-link">HOME</Link>
 
-            {/* Category Dropdown */}
+            
             <div className="relative group">
               <button
                 className="nav-link flex items-center"
@@ -169,7 +159,6 @@ const Header = () => {
           </nav>
         </div>
 
-        {/* Center - Logo (always perfectly centered) */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <Link
             to="/"
@@ -180,7 +169,7 @@ const Header = () => {
             OLIGHT
           </Link>
 
-          {/* Search Bar (replaces logo when active) */}
+          
           <div
             className={`flex items-center w-screen max-w-xl transition-all duration-300 absolute left-1/2 -translate-x-1/2 ${
               isSearchOpen
@@ -202,7 +191,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Right side icons */}
+       
         <div className="flex items-center">
           <div className="flex items-center space-x-4 sm:space-x-5">
             <Search
@@ -226,12 +215,12 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      
       {isMenuOpen && (
         <div className="lg:hidden bg-white border-t px-6 py-4 space-y-4">
           <Link to="/" className="block nav-link">HOME</Link>
 
-          {/* Mobile Categories */}
+          
           <div>
             <button
               className="flex items-center justify-between w-full nav-link"
@@ -276,7 +265,7 @@ const Header = () => {
         </div>
       )}
 
-      {/* Marquee CSS */}
+      
       <style>{`
         .marquee-container { width: 100%; overflow: hidden; position: relative; }
         .marquee-content {
