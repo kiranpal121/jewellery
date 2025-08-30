@@ -9,14 +9,13 @@ import {
   ChevronUp,
 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom"; // ✅ use Link for SPA navigation
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
-  // Category data
   const categories = [
     {
       name: "Earrings",
@@ -72,7 +71,7 @@ const Header = () => {
 
   return (
     <header className="w-full border-b bg-white">
-      {/* Top Banner with Marquee */}
+      {/* Top Banner */}
       <div className="bg-black text-white text-xs sm:text-sm py-2 overflow-hidden relative">
         <div className="marquee-container whitespace-nowrap">
           <div className="marquee-content">
@@ -129,7 +128,6 @@ const Header = () => {
                 )}
               </button>
 
-              {/* Dropdown */}
               {isCategoryOpen && (
                 <div
                   className="absolute left-0 top-full mt-0 w-screen max-w-5xl bg-white shadow-xl rounded-b-md border border-gray-200 z-50 py-6 px-8"
@@ -171,8 +169,8 @@ const Header = () => {
           </nav>
         </div>
 
-        {/* Center - Logo / Search */}
-        <div className="flex-1 flex justify-center mx-4 relative">
+        {/* Center - Logo (always perfectly centered) */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <Link
             to="/"
             className={`text-xl sm:text-2xl font-bold tracking-wide transition-all duration-300 ${
@@ -182,9 +180,9 @@ const Header = () => {
             OLIGHT
           </Link>
 
-          {/* Search Bar */}
+          {/* Search Bar (replaces logo when active) */}
           <div
-            className={`flex items-center w-full max-w-xl transition-all duration-300 absolute ${
+            className={`flex items-center w-screen max-w-xl transition-all duration-300 absolute left-1/2 -translate-x-1/2 ${
               isSearchOpen
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-95 pointer-events-none"
